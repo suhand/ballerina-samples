@@ -60,7 +60,7 @@ function getPersonInformation(mysql:Client mysqlClient) {
 }
 ```
 
-How ever due to an issue this open record type concept is not working with the result stream.
+How ever due to an issue, this open record type concept is not working with the result stream.
 - https://github.com/ballerina-platform/ballerina-standard-library/issues/1174
 
 Therefore as a workaround following is suggested for the `getPersonInformation(mysql:Client)` method, until the issue is fixed.
