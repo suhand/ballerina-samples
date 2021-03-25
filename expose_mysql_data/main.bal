@@ -22,8 +22,9 @@ function getPersonInformation(mysql:Client mysqlClient) {
     error? e = resultStream.forEach(function(record { } result) {
             // Workaround - part 2 of 2
             personRecord cloneWithType = checkpanic result.cloneWithType(personRecord);
-            io:println("ID: ", result["id"]);
-            io:println("First Name: ", result["first_name"]);
+            io:println("ID: ", cloneWithType["id"]);
+            io:println("First Name: ", cloneWithType["first_name"]);
+            io:println("Last Name: ", cloneWithType["last_name"]);
             io:println("----------------------------------------------");
         });
 
