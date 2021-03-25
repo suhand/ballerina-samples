@@ -1,0 +1,7 @@
+# MySQL DB details
+[expose_mysql_data]
+dbHost = "localhost"
+dbUser = "root"
+dbPassword = "password"
+dbName = "bal_sample_db"
+dbPort = 3306
