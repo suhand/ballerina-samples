@@ -88,6 +88,8 @@ service / on new http:Listener(9090) {
     }
 }
 ```
+Invoke service
+`curl http://localhost:9090/personjson/info/Avengers`
 
 - ### main.bal (commented out)
 
