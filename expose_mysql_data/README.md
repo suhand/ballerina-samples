@@ -1,5 +1,7 @@
 # Expose MySQL DB data via Ballerina
 
+- ## main.bal
+
 In this sample we have created an open type [record](https://ballerina.io/learn/by-example/records),
 ```
 type personRecord record {
@@ -39,7 +41,7 @@ public function main() {
 }
 ```
 
-Following is the `getPersonInformation(mysql:Client)` method.
+Following is the `getPersonInformation(mysql:Client)` method. This is how it is supposed to be.
 ```
 function getPersonInformation(mysql:Client mysqlClient) {
     io:println("------ Start Fetching Person Information -------");

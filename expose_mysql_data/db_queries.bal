@@ -1,4 +1,11 @@
-string GET_PERSON_INFO_QUERY = string `
-    SELECT id, first_name, last_name
-    FROM person 
-`;
+import ballerina/sql;
+
+function getPersonInfoQuery(string department) returns sql:ParameterizedQuery{
+
+return  `
+        SELECT id, first_name, last_name
+        FROM person 
+        WHERE department = ${department}
+    `;
+
+}
