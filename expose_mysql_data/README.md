@@ -5,7 +5,7 @@
 - ### Config.toml
 Doc URL: https://ballerina.io/learn/by-example/configurable.html
 
-configurable variables allow configuration of module-level variables **at the program execution**. This enables initializing variables with externally provided values. These values for configurable variables can be provided in a file named `Config.toml`.
+configurable variables allow configuration of module-level variables **at the program execution**. This enables initializing variables with externally provided values. These values for configurable variables can be provided in a file named `Config.toml`.  
 All MySQL DB related key value pairs required for this sample are stored in this file.
 ```
 [expose_mysql_data]
@@ -16,7 +16,7 @@ dbName = "bal_sample_db"
 dbPort = 3306
 ```
 ---
-> _Note:_ You can still use `bal encrypt` to encrypt your values in Config.toml file. However in Ballerina 2.x.x path you cannot simply access these values. Please use the following method to access the decrypted value inside the program.
+> _Note:_ You can still use `bal encrypt` to encrypt your values in `Config.toml` file. However in Ballerina `2.x.x` path you cannot simply access these values. Please use the following method to access the decrypted value inside the program.
 ```
 config:decryptString(dbPassword)
 ```
@@ -43,7 +43,7 @@ return  `
 MySQL client initialization and functions which are querying data from MySQL DB are stored in this file.
 
 - ### db_type_records.bal
-Relevant record types that are used in `db_functions.bal` file are stored in this file.
+Relevant record types that are used in `db_functions.bal` file are stored in this file.  
 In this sample we have created an open type [record](https://ballerina.io/learn/by-example/records).
 ```
 type personRecord record {
@@ -52,11 +52,15 @@ type personRecord record {
 };
 ```
 
-> Note: How ever due to an issue, this open record type concept is not working with the result stream.
+> Note: How ever due to an issue, this open record type concept is not working with the result stream.   
+> Note that the `last_name` field is defined in the query but not defined in the open record type above.  
 > - https://github.com/ballerina-platform/ballerina-standard-library/issues/1174
 
 > Therefore from the following code (supposed to be),  
-> `stream<record{}, error> resultStream = mysqlClient->query(GET_PERSON_INFO_QUERY, personRecord);`
+```
+stream<record{}, error> resultStream = mysqlClient->query(GET_PERSON_INFO_QUERY, personRecord);
+personRecord["last_name"]
+```
 
 > changed the code to the following as a workaround,  
 ```
@@ -66,6 +70,7 @@ stream<record{}, error> resultStream = mysqlClient->query(GET_PERSON_INFO_QUERY)
 error? e = resultStream.forEach(function(record { } result) {
         // Workaround - part 2 of 2
         personRecord cloneWithType = checkpanic result.cloneWithType(personRecord);
+        personRecordClonedWithType["last_name"]
 ```
 
 - ### service.bal
